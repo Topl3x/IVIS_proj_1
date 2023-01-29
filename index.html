@@ -7,27 +7,34 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales'],
-          ['2004',  1000],
-          ['2005',  1170],
-          ['2006',  660],
-          ['2007',  1030]
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
         ]);
 
         var options = {
           chart: {
             title: 'Company Performance',
             subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-          }
+          },
         };
 
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
         chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        document.getElementById('sort').addEventListener('click', function() {
+          var view = new google.visualization.DataView(data);
+          view.setRows(view.getSortedRows({column: 1, desc: false}));
+          chart.draw(view, google.charts.Bar.convertOptions(options));
+        });
       }
     </script>
   </head>
   <body>
     <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+    <br>
+    <button id="sort">Sort Bars (Increasing Sales)</button>
   </body>
 </html>
