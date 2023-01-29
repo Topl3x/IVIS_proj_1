@@ -6,10 +6,10 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var queryString = encodeURIComponent('SELECT A, B LIMIT 5 OFFSET 1');
+        var queryString = encodeURIComponent('SELECT * LIMIT 41 OFFSET 1');
 
         var query = new google.visualization.Query(
-            'https://docs.google.com/spreadsheets/d/1uIzxPJpo1bQFRC2t6b_3sIldyy3hRO6sp9OLPrVAW-U/gviz/tq?gid=0&headers=1&tq=' + queryString);
+            'https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/gviz/tq?gid=0&headers=1&tq=' + queryString);
         query.send(handleQueryResponse);
       }
 
